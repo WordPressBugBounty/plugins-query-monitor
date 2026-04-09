@@ -414,10 +414,12 @@ class QM_Dispatcher_Html extends QM_Dispatcher {
 
 		$this->output_assets();
 
+		$encoded = wp_json_encode( $json, JSON_UNESCAPED_SLASHES );
+
 		wp_print_inline_script_tag(
 			sprintf(
 				'var QueryMonitorData = %s;',
-				json_encode( $json, JSON_UNESCAPED_SLASHES )
+				false !== $encoded ? $encoded : 'false'
 			),
 			array(
 				'id' => 'query-monitor-inline-data',
@@ -647,7 +649,7 @@ class QM_Dispatcher_Html extends QM_Dispatcher {
 
 				printf(
 					'<li>%s</li>',
-					QM_Output_Html::output_filename( $name, $frame['file'], $frame['line'] )
+					QM_Output_Html::output_filename( $name, $frame['file'] ?? '', $frame['line'] ?? 0 )
 				); // WPCS: XSS ok.
 			}
 			echo '</ol>';

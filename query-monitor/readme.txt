@@ -3,7 +3,7 @@
 Contributors: johnbillion
 Tags: debug, debug-bar, development, performance, query monitor
 Tested up to: 6.9
-Stable tag: 4.0.2
+Stable tag: 4.0.3
 License: GPL v2 or later
 Donate link: https://github.com/sponsors/johnbillion
 
@@ -146,6 +146,19 @@ Do not report security issues on the WordPress.org support forums or via email. 
 In addition, if you like the plugin then I'd love for you to [leave a review](https://wordpress.org/support/view/plugin-reviews/query-monitor). Tell all your friends about it too!
 ## Changelog ##
 
+### 4.0.3 (9 April 2026) ###
+
+Version 4 of Query Monitor adds a new timeline view, and switches from rendering its panels server-side in PHP to efficiently rendering them client-side in Preact.
+
+Version 4.0.3 fixes the following:
+
+- Improves compatibility with plugins that perform non-UTF8 queries or make other use of non-UTF8 data
+- Avoids a PHP warning for undefined file and line number in some stack trace frames
+- Simplifies and standardises the format of names used for closure callbacks
+- Improves styling and layout of the timeline view
+
+[More information at querymonitor.com/4](https://querymonitor.com/4).
+
 ### 4.0.2 (9 April 2026) ###
 
 Version 4 of Query Monitor adds a new timeline view, and switches from rendering its panels server-side in PHP to efficiently rendering them client-side in Preact.
@@ -206,12 +219,6 @@ Version 4 of Query Monitor adds a new timeline view, and switches from rendering
 * Adds Guzzle middleware support for logging HTTP client requests.
 * Fixes plugin conflicts caused by the global `qm` JavaScript variable by renaming it to `QueryMonitorData`.
 * Corrects invalid HTML markup where `<th>` elements were closed with `</td>` tags.
-
-### 3.18.0 (16 June 2025) ###
-
-* Adds more comprehensive handling of HTTP API requests which were overridden by the `pre_http_request` filter.
-* Corrects the handling of suppressed PHP errors on both PHP 7 and PHP 8.
-* Confirms support for WordPress 6.8.
 
 ### Earlier versions ###
 
