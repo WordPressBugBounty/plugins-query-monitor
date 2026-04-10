@@ -3,7 +3,7 @@
 Contributors: johnbillion
 Tags: debug, debug-bar, development, performance, query monitor
 Tested up to: 6.9
-Stable tag: 4.0.4
+Stable tag: 4.0.5
 License: GPL v2 or later
 Donate link: https://github.com/sponsors/johnbillion
 
@@ -146,6 +146,17 @@ Do not report security issues on the WordPress.org support forums or via email. 
 In addition, if you like the plugin then I'd love for you to [leave a review](https://wordpress.org/support/view/plugin-reviews/query-monitor). Tell all your friends about it too!
 ## Changelog ##
 
+### 4.0.5 (10 April 2026) ###
+
+Version 4 of Query Monitor adds a new timeline view, and switches from rendering its panels server-side in PHP to efficiently rendering them client-side in Preact.
+
+Version 4.0.5 fixes the following:
+
+- Ensures closing script tags within data don't break the output
+- Adds "Doing it Wrong" data to the timeline view
+
+[More information at querymonitor.com/4](https://querymonitor.com/4).
+
 ### 4.0.4 (10 April 2026) ###
 
 Version 4 of Query Monitor adds a new timeline view, and switches from rendering its panels server-side in PHP to efficiently rendering them client-side in Preact.
@@ -219,11 +230,6 @@ Version 4 of Query Monitor adds a new timeline view, and switches from rendering
 * Confirms support for WordPress 6.9.
 * Removes calls to deprecated `jQuery.focus()` method.
 * Add line breaks to HTML output to keep your browser happy when viewing the page source.
-
-### 3.20.0 (7 September 2025) ###
-
-* Defers loading of translation files as late as possible to minimise the chance of triggering the `Translation loading for the query-monitor domain was triggered too early` error
-* Implements some initial compatibility tweaks for the upcoming PHP 8.5
 
 ### Earlier versions ###
 
