@@ -16,8 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *   headers: \WpOrg\Requests\Utility\CaseInsensitiveDictionary,
  *   body: string,
  *   response: array{
- *     code: int|false,
- *     message: string|false,
+ *     code?: int|false,
+ *     message?: string|false,
  *   },
  *   cookies: array<int, \WP_Http_Cookie>,
  *   filename: string|null,
@@ -299,8 +299,8 @@ class QM_Collector_HTTP extends QM_DataCollector {
 			$response_data = $response;
 		} else {
 			$response_data = new QM_Data_HTTP_Response();
-			$response_data->code = (int) $response['response']['code'];
-			$response_data->message = (string) $response['response']['message'];
+			$response_data->code = (int) ( $response['response']['code'] ?? 0 );
+			$response_data->message = (string) ( $response['response']['message'] ?? '' );
 		}
 
 		$http_response = array(
@@ -446,7 +446,7 @@ class QM_Collector_HTTP extends QM_DataCollector {
 	 * @param QM_Backtrace $trace The backtrace object.
 	 * @param array<string, mixed> $options Guzzle request options.
 	 */
-	public function log_guzzle_request( $request, $response, $exception, string $url, float $start_time, QM_Backtrace $trace, array $options ) : void {
+	public function log_guzzle_request( $request, $response, $exception, string $url, float $start_time, QM_Backtrace $trace, array $options ): void {
 		$end_time = microtime( true );
 		$ltime = $end_time - $start_time;
 		$key = $start_time . $url;
